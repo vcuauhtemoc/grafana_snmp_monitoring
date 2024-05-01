@@ -1,0 +1,44 @@
+name: rpi_monitoring
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    volumes:
+      - ./prometheus:/etc/prometheus
+    networks:
+      - default
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    depends_on:
+      - snmp_exporter
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana  # Change this to your desired password
+    volumes: 
+      - ./grafana:/etc/grafana/provisioning/datasources
+    networks:
+      - default
+    restart: unless-stopped
+  snmp_exporter:
+    image: prom/snmp-exporter:
+    volumes:
+      - ./snmp_exporter/snmp.yml:/etc/snmp_exporter/snmp.yml
+    networks:
+      - default
+    ports:
+      - "9116:9116"
+
+volumes:
+  prom_data:
+
+networks:
+  default:
