@@ -15,7 +15,6 @@ services:
     restart: unless-stopped
     depends_on:
       - snmp_exporter
-
   grafana:
     image: grafana/grafana
     ports:
