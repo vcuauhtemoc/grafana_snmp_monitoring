@@ -1,6 +1,6 @@
 # WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
 auths:
-  auth_name:
+  public_v2:
     community: wifipartytime
     security_level: noAuthNoPriv
     auth_protocol: MD5
