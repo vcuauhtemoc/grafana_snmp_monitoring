@@ -41,6 +41,8 @@ services:
         - "9115:9115"
     networks:
       - default
+  mdns_service:
+    image:
 volumes:
   prom_data:
 
