@@ -15,32 +15,28 @@ services:
     restart: unless-stopped
     depends_on:
       - snmp_exporter
+
   grafana:
     image: grafana/grafana
     ports:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=grafana
+      - GF_SECURITY_ADMIN_PASSWORD=grafana  # Change this to your desired password
     volumes: 
       - ./grafana:/etc/grafana/provisioning/datasources
     networks:
       - default
     restart: unless-stopped
   snmp_exporter:
-    image: prom/snmp-exporter
+    image: prom/snmp-exporter:
     volumes:
       - ./snmp_exporter/snmp.yml:/etc/snmp_exporter/snmp.yml
     networks:
       - default
     ports:
       - "9116:9116"
-  blackbox_exporter:
-    image: prom/blackbox-exporter
-    ports:
-        - "9115:9115"
-    networks:
-      - default
+
 volumes:
   prom_data:
 
