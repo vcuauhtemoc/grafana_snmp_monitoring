@@ -12,7 +12,7 @@ scrape_configs:
           job: "snmp exporter"
     metrics_path: /snmp
     params:
-      module: {{ snmp_modules }}
+      module: {{ snmp_modules.keys() }}
       auth: [public_v2]
     relabel_configs:
       - source_labels: [__address__]
