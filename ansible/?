@@ -1,0 +1,15 @@
+local:
+
+localhost ansible_connection=local
+grafana_user: admin
+grafana_password: password
+monitored_hosts: 
+  - 192.168.196.208
+  - 192.168.196.64
+
+snmp_modules:
+  - if_mib
+  - ucd_snmp_mib
+
+blackbox_modules:
+  - icmp

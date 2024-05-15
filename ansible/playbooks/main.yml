@@ -1,0 +1,17 @@
+---
+- name: Create docker compose file and prometheus yaml
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files: group_vars/custom_vars.yml
+  tasks:
+    - name: create docker compose file
+      template:
+        src: templates/docker-compose.yml.j2
+        dest: ../../docker-compose.yml
+
+    - name: Create prometheus yml
+      template:
+        src: templates/prometheus.yml.j2
+        dest: ../../prometheus/prometheus.yml
+
