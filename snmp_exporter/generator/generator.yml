@@ -1,5 +1,0 @@
-auths:
-  public_v2:                    # This is the name of the auth profile, which contains within it the SNMP community string.
-    version: 2
-    community: wifipartytime
-modules: {'if_mib': {'walk': ['interfaces', 'sysName', 'sysLocation']}, 'ucd_snmp_mib': {'walk': ['1.3.6.1.4.1.2021']}, 'host_resources_mib': {'walk': ['hrSystem']}}
