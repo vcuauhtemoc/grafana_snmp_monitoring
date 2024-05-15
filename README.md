@@ -4,7 +4,7 @@ A one-shot docker-compose which starts a Grafana service with a prometheus datas
 
 ## System Requirements
 
-- Ensure Ansible, Docker and Docker Compose are installed on your local machine.
+- Ensure [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html), [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your local machine.
 - Docker must be running with root privileges.
 
 ## Configuration
