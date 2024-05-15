@@ -6,7 +6,7 @@ A one-shot docker-compose which starts a Grafana service with a prometheus datas
 
 Ensure Ansible is installed on your local machine.
 
-- Open the `custom_vars.yml` file in `ansible/playbooks/group_vars/` to add functionality and host lists to monitor.
+- Open the `custom_vars.yml` file in `ansible/playbooks/group_vars/` to add functionality and host lists to monitor.\
 Example:
 ```
 grafana_user: admin
