@@ -20,10 +20,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=grafana  # Change this to your desired password
+      GF_SECURITY_ADMIN_USER: "admin"
+      GF_SECURITY_ADMIN_PASSWORD: "grafana"
+      GF_PATHS_PROVISIONING: "/etc/grafana/provisioning"
     volumes: 
-      - ./grafana:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/provisioning/dashboards:/var/lib/grafana/dashboards
     networks:
       - default
     restart: unless-stopped
@@ -37,6 +40,8 @@ services:
       - "9116:9116"
   blackbox_exporter:
     image: prom/blackbox-exporter
+    cap_add:
+      - NET_RAW
     ports:
       - "9115:9115"
 volumes:
