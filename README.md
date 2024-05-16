@@ -1,4 +1,4 @@
-# Grafana Monitoring Project
+# Grafana SNMP Monitoring
 
 A one-shot docker-compose which starts a Grafana service with a prometheus datasource, using snmp_exporter and blackbox_exporter to collect basic telemetry and diagnostics on any device running an SNMP agent.
 
