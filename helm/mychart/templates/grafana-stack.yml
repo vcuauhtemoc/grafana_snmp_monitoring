@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: grafana-stack
+  name: grafana-stack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-stack
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grafana-stack
+    spec:
+      containers:
+      - image: grafana/grafana
+        name: grafana
+        livenessProbe:
+          httpGet:
+            port: 3030
+        volumeMounts:
+        - name: grafana
+          mountPath: /etc/grafana/provisioning/datasources
+          subPath: provisioning/datasources
+        - name: grafana
+          mountPath: /var/lib/grafana/dashboards
+          subPath: provisioning/dashboards
+        resources: {}
+      - image: prom/prometheus
+        name: prometheus
+        livenessProbe:
+          httpGet:
+            port: 9090
+          initialDelaySeconds: 30
+          periodSeconds: 5
+        volumeMounts:
+        - name: prometheus
+          mountPath: /etc/prometheus
+      - image: prom/snmp-exporter
+        name: snmp-exporter
+        livenessProbe:
+          httpGet:
+            port: 9116
+          initialDelaySeconds: 30
+          periodSeconds: 5
+        volumeMounts:
+        - name: snmp
+          mountPath: /etc/snmp_exporter/snmp.yml
+      - image: prom/blackbox-exporter
+        name: blackbox-exporter
+        livenessProbe:
+          httpGet:
+            port: 9115
+          intialDelaySeconds: 30
+          periodSeconds: 5
+      volumes:
+      - name: grafana
+        persistentVolumeClaim:
+          claimName: grafana-pvc
+      - name: prometheus
+        persistentVolumeClaim:
+          claimName: prometheus-pvc
+
+
+
+status: {}
