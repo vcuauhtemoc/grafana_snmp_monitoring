@@ -16,34 +16,34 @@ A docker-compose which starts a Grafana service with a prometheus datasource, us
 cp ansible/playbooks/group_vars/template.yml ansible/playbooks/group_vars/vars.yml
 ```
 
-Open `vars.yml` in a text editor, and add modules and host lists to monitor.
+- Open `vars.yml` in a text editor, and add modules and host lists to monitor. the MIB directory is `snmp-exporter/generator/mibs`, with some default MIBs included. Put any additional MIBs in this folder.
 
-Example:
+  Example:
 
-```YAML
-monitored_hosts: 
-  - 192.168.196.208
-  - 192.168.196.64
+  ```YAML
+  monitored_hosts: 
+    - 192.168.196.208
+    - 192.168.196.64
 
-snmp_modules:
-  if_mib:
-    walk:
-      - interfaces
-      - sysName
-      - sysLocation
-  ucd_snmp_mib:
-    walk:
-      - 1.3.6.1.4.1.2021
-  host_resources_mib:
-    walk:
-      - hrSystem
+  snmp_modules:
+    if_mib:
+      walk:
+        - interfaces
+        - sysName
+        - sysLocation
+    ucd_snmp_mib:
+      walk:
+        - 1.3.6.1.4.1.2021
+    host_resources_mib:
+      walk:
+        - hrSystem
 
-blackbox_modules:
-  - icmp
-  - http
-```
+  blackbox_modules:
+    - icmp
+    - http
+  ```
 
-See [snmp_exporter](https://github.com/prometheus/snmp_exporter/tree/main?tab=readme-ov-file#prometheus-configuration) and [blackbox_exporter](https://github.com/prometheus/blackbox_exporter?tab=readme-ov-file#prometheus-configuration) for more configuration info.
+  See [snmp_exporter](https://github.com/prometheus/snmp_exporter/tree/main?tab=readme-ov-file#prometheus-configuration) and [blackbox_exporter](https://github.com/prometheus/blackbox_exporter?tab=readme-ov-file#prometheus-configuration) for more configuration info.
 
 - To configure a grafana username/password: in the `ansible/playbooks` directory, run `./encrypt_creds`. Create a **vault password** for encrypting the credentials, then follow the prompts for entering the grafana username and password you want to configure.
 
