@@ -3,7 +3,9 @@
   hosts: localhost
   connection: local
   gather_facts: no
-  vars_files: group_vars/custom_vars.yml
+  vars_files: 
+    - group_vars/vars.yml
+    - group_vars/creds.yml
   tasks:
     - name: Create docker compose file
       template:

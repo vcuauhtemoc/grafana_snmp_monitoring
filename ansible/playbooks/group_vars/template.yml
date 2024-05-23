@@ -1,0 +1,9 @@
+# List of IPs or hostnames to monitor
+monitored_hosts:
+
+# Dictionary of SNMP modules to use. Each key will have a 'get' and 'walk' attribute, list the desired OIDs here.
+snmp_modules: 
+
+# List of blackbox modules to include (http,tcp,dns,icmp,grpc) 
+# More info: https://github.com/prometheus/blackbox_exporter?tab=readme-ov-file#configuration
+blackbox_modules:

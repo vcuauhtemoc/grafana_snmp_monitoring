@@ -2,5 +2,7 @@ docker-compose.yml
 prometheus/prometheus.yml
 snmp_exporter/generator/generator.yml
 snmp_exporter/snmp.yml
+ansible/playbooks/group_vars/creds.yml
+ansible/playbooks/group_vars/vars.yml
 
 
