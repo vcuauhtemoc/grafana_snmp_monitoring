@@ -13,7 +13,7 @@ A docker-compose which starts a Grafana service with a prometheus datasource, us
 - Create the `custom_vars.yml` file in `ansible/playbooks/group_vars/` from the template:
 
 ``` BASH
-cp ansible/playbook/group_vars/template.yml ansible/playbook/group_vars/vars.yml
+cp ansible/playbooks/group_vars/template.yml ansible/playbooks/group_vars/vars.yml
 ```
 
 Open `vars.yml` in a text editor, and add modules and host lists to monitor.
