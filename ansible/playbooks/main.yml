@@ -23,7 +23,7 @@
         dest: ../../snmp_exporter/generator/generator.yml
 
     - name: Generate snmp.yml
-      command: ./generator generate -o ../snmp.yml
+      command: ./generator generate -m mibs -o ../snmp.yml
       args:
         chdir: ../../snmp_exporter/generator
 
