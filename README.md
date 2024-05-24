@@ -12,9 +12,9 @@ A docker-compose which starts a Grafana service with a prometheus datasource, us
 
 - Create the `custom_vars.yml` file in `ansible/playbooks/group_vars/` from the template:
 
-``` BASH
-cp ansible/playbooks/group_vars/template.yml ansible/playbooks/group_vars/vars.yml
-```
+  ``` BASH
+  cp ansible/playbooks/group_vars/template.yml ansible/playbooks/group_vars/vars.yml
+  ```
 
 - Open `vars.yml` in a text editor, and add modules and host lists to monitor. the MIB directory is `snmp-exporter/generator/mibs`, with some default MIBs included. Put any additional MIBs in this folder.
 
