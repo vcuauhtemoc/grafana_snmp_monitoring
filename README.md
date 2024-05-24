@@ -45,7 +45,7 @@ cp ansible/playbooks/group_vars/template.yml ansible/playbooks/group_vars/vars.y
 
   See [snmp_exporter](https://github.com/prometheus/snmp_exporter/tree/main?tab=readme-ov-file#prometheus-configuration) and [blackbox_exporter](https://github.com/prometheus/blackbox_exporter?tab=readme-ov-file#prometheus-configuration) for more configuration info.
 
-- To configure a grafana username/password: in the `ansible/playbooks` directory, run `./encrypt_creds`. Create a **vault password** for encrypting the credentials, then follow the prompts for entering the grafana username and password you want to configure.
+- To configure a grafana username/password: in the `ansible/playbooks` directory, run `./encrypt_creds.sh`. Create a **vault password** for encrypting the credentials, then follow the prompts for entering the grafana username and password you want to configure.
 
 - In the same directory, run: `ansible-playbook --ask-vault-pass main.yml`. You will be prompted for the **vault password** you just set in the previous step. Ensure the playbook ran through without failures.
 
