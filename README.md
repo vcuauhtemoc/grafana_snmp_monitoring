@@ -47,10 +47,10 @@ A docker-compose which starts a Grafana service with a prometheus datasource, us
 
 - To configure a grafana username/password: in the `ansible/playbooks` directory, run `./encrypt_creds.sh`. Create a **vault password** for encrypting the credentials, then follow the prompts for entering the grafana username and password you want to configure.
 
-- In the same directory, run: `ansible-playbook --ask-vault-pass main.yml`. You will be prompted for the **vault password** you just set in the previous step. Ensure the playbook ran through without failures.
+- In the same directory, run: `ansible-playbook --ask-vault-pass main.yml`. You will be prompted for the **vault password** you just set in the previous step. Ensure the playbook ran through without failures. This will generate your **docker-compose.yml**.
 
 ### Run the Docker Containers
 
-- In the root directory of the project, run `sudo docker-compose up -d`
+- In the root directory of the project, run `sudo docker-compose up -d` to stand up the service stack.
 
 - You can check the status of the prometheus services and targets at `http://localhost:9090/targets` and access Grafana at `http://localhost:3000`. You should be able to login with the credentials you provided previously. A sample dashboard collecting ping from monitored hosts is provided.
